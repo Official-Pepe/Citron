@@ -13,10 +13,26 @@ Every Version that ends with an .0 is an beta version and is not safe to use, ev
 
 Download the newest version or the one that fits for your Rasberry pi vesion, and chose if you want an resrvoir/Pushbullet support and download it
 
+## DEPENDENCIES
+
+On the Rasberry pi itself you can install Ubuntu server or Raspberry Pi OS, DietPi, HypriotOS, Tiny Core Linux or somthing like that, we recommend Raspberry Pi OS Lite
+also you need to install Java on the Rasberry pi. 
+
+## Installation and setup
+
+ - Download the operating system via the [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
+    - Select the Lite version (without desktop) for maximum efficiency.
+      - Flash the operating system to a microSD card (at least 8 GB).
+
+### After the installation:
+ - Set up SSH (e.g. by placing an empty ssh file in the boot directory).
+    - Install your dependencies (``sudo apt update && sudo apt install openjdk-17-jre`` for Java).
+
+
 # Shell file setup
 
-Customizing the script
-Adjust paths: Replace ``/path/to/pi4j-core.jar`` and ``/path/to/your/code`` with the actual paths and
+## Customizing the script
+Adjust paths: Replace ``/path/to/pi4j-core.jar`` and ``/path/to/your/code`` with the actual paths and 
 Adapt Java classes: Make sure that the classes ``PlantWateringSystemServo`` (for the servo motor version) and ``PlantWateringSystemPushbullet`` (for the pushbullet version) are present in ``CODE_PATH``.
 
 ## create an Sytemd file
@@ -39,6 +55,11 @@ WorkingDirectory=/home/pi
 [Install]
 WantedBy=multi-user.target
 ```
+
+Then use this script to make it an execuable ``chmod +x /path/to/plant_watering.sh`` (Replace the ``/path/to/plant_watering.sh`` with the actual path)
+
+Last but not least activate the service with this script ```` sudo systemctl enable plant_watering.service
+sudo systemctl start plant_watering.service````
 
 # Reservoir set up 
 >[!WARNING]
