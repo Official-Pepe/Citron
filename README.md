@@ -11,13 +11,13 @@ Every Version that ends with an .0 is an beta version and is not safe to use, ev
 
 # Useage
 
-Download the newest version or the one that fits for your Rasberry pi vesion, and chose if you want an resrvoir/Pushbullet and download it
+Download the newest version or the one that fits for your Rasberry pi vesion, and chose if you want an resrvoir/Pushbullet support and download it
 
 # Shell file setup
 
-Anpassung des Skripts
-Pfade anpassen: Ersetze ``/path/to/pi4j-core.jar`` und ``/path/to/your/code`` durch die tatsächlichen Pfade.
-Java-Klassen anpassen: Stelle sicher, dass die Klassen ``PlantWateringSystemServo`` (für die Servomotor-Version) und ``PlantWateringSystemPushbullet`` (für die Pushbullet-Version) im ``CODE_PATH`` vorhanden sind.
+Customizing the script
+Adjust paths: Replace ``/path/to/pi4j-core.jar`` and ``/path/to/your/code`` with the actual paths and
+Adapt Java classes: Make sure that the classes ``PlantWateringSystemServo`` (for the servo motor version) and ``PlantWateringSystemPushbullet`` (for the pushbullet version) are present in ``CODE_PATH``.
 
 ## create an Sytemd file
 
