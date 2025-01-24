@@ -13,6 +13,28 @@ Every Version that ends with an .0 is an beta version and is not safe to use, ev
 
 Download the newest version or the one that fits for your Rasberry pi vesion, and chose if you want an resrvoir/Pushbullet and download it
 
+# Shell file setup
+
+Anpassung des Skripts
+Pfade anpassen: Ersetze ``/path/to/pi4j-core.jar`` und ``/path/to/your/code`` durch die tatsächlichen Pfade.
+Java-Klassen anpassen: Stelle sicher, dass die Klassen ``PlantWateringSystemServo`` (für die Servomotor-Version) und ``PlantWateringSystemPushbullet`` (für die Pushbullet-Version) im ``CODE_PATH`` vorhanden sind.
+
+## create an Sytemd file
+
+``sudo nano /etc/systemd/system/plant_watering.service``
+
+### Systemd input
+
+``[Unit]
+Description=Pflanzen-Bewässerungssystem
+After=network.target
+[Service]
+ExecStart=/path/to/plant_watering.sh
+Restart=always
+User=pi
+WorkingDirectory=/home/pi
+[Install]
+WantedBy=multi-user.target``
 
 # Reservoir set up 
 >[!WARNING]
@@ -40,6 +62,7 @@ Sign in your pushbullet acount or get one, and get your API key under “Setting
 Then change the value in the code ``YOUR_PUSHBULLET_API_KEY`` and pste there your api key, __nothing else__
 
 ### Java library for Pushbullet
+
 Use the Pushbullet API Wrapper library for Java or send HTTP requests with a standard library.
 
 # Extras 
