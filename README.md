@@ -25,16 +25,20 @@ Java-Klassen anpassen: Stelle sicher, dass die Klassen ``PlantWateringSystemServ
 
 ### Systemd input
 
-``[Unit]
+```
+[Unit]
 Description=Pflanzen-Bewässerungssystem
 After=network.target
+
 [Service]
 ExecStart=/path/to/plant_watering.sh
 Restart=always
 User=pi
 WorkingDirectory=/home/pi
+
 [Install]
-WantedBy=multi-user.target``
+WantedBy=multi-user.target
+```
 
 # Reservoir set up 
 >[!WARNING]
