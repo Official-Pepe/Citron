@@ -1,0 +1,3 @@
+dependencies {
+    implementation 'com.pi4j:pi4j-core:1.2'
+}
