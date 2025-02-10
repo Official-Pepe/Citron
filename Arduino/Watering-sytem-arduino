@@ -1,0 +1,116 @@
+/*
+VCC = 5 Volt cap sens
+VCC = 3.3 Volt Relay
+
+-------------------------------------------------------------*/
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+Adafruit_SSD1306 display(128, 64, &Wire, -1);
+
+/*
+const unsigned char Smiley_happy [] PROGMEM = {
+};
+
+const unsigned char Smiley_middle [] PROGMEM = {
+
+};
+
+const unsigned char Smiley_sad [] PROGMEM = {
+};*/
+
+/*const int waterValue= 400;
+const int moistValue= 600;
+const int dryValue = 850;
+const int pumpON = 660;*/
+
+int val = 1;
+
+void setup() {
+// put your setup code here, to run once:
+Serial.begin(9600);
+digitalWrite(0, 1);
+pinMode (2, OUTPUT);
+digitalWrite(2, 1);
+
+// initialize with the I2C addr 0x3C
+display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+
+// Clear the buffer.
+display.clearDisplay();
+//display.invertDisplay(1);
+// symbol_leer
+
+display.drawRoundRect(0, 14, 30, 50, 5, WHITE);
+display.display();
+delay(2000);
+
+// symbol_quarter_full
+
+display.fillRoundRect(0, 14, 30, 12.5, 2, WHITE);
+display.display();
+delay(2000);
+
+// symbol_half_full
+
+display.fillRoundRect(0, 14, 30, 25, 2, WHITE);
+display.display();
+delay(2000);
+
+// symbol_three_quarters_full
+display.fillRoundRect(0, 14, 30, 38, 2, WHITE);
+display.display();
+delay(2000);
+
+// symbol_full
+
+display.fillRoundRect(0, 14, 30, 50, 2, WHITE);
+display.display();
+delay(2000);
+
+}
+
+void loop() {
+// put your main code here, to run repeatedly:
+display.clearDisplay();
+int sensorValue=analogRead(A0);
+Serial.println(sensorValue);
+delay(200);
+
+//display.println(sensorValue);
+
+if (sensorValue > 620)
+{
+//val=!val;
+display.drawRoundRect(0, 14, 30, 50, 5, WHITE);
+display.display();
+digitalWrite(2,0); // 0 bzw. LOW = AN
+}
+
+else if ((sensorValue < 550) && (sensorValue > 500))
+{
+display.fillRoundRect(0, 14, 30, 12.5, 2, WHITE);
+display.display();
+}
+
+else if ((sensorValue < 500) && (sensorValue > 450))
+{
+display.fillRoundRect(0, 14, 30, 38, 2, WHITE);
+display.display();
+}
+
+else if (sensorValue < 550)
+{
+display.fillRoundRect(0, 14, 30, 50, 2, WHITE);
+display.display();
+digitalWrite(2,1);
+}
+display.setTextSize(2);
+display.setTextColor(WHITE);
+display.setCursor(50,20);
+display.println(sensorValue);
+display.display();
+delay(200);
+}

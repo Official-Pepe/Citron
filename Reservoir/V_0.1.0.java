@@ -1,28 +1,34 @@
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinAnalogInput;
-import com.pi4j.io.gpio.GpioPinPwmOutput;
-import com.pi4j.io.gpio.RaspiPin;
-import com.pi4j.io.gpio.event.GpioPinAnalogValueChangeEvent;
-import com.pi4j.io.gpio.event.GpioPinAnalogValueChangeListener;
-
-
+// Date: 2025/01/31
 
     /**
-     * Hauptmethode der Anwendung.
+     * Main method of the application.
      *
-     * @param args Kommandozeilenargumente (werden ignoriert)
+     * @param args Command line arguments (are ignored)
      */
     public static void main(String[] args) {
-        System.out.println("Pflanzen-Bewässerungssystem gestartet...");
+        System.out.println("Plant irrigation system launched...");
 
-        // GPIO Controller initialisieren
+        // Initialize GPIO controller
         final GpioController gpio = GpioFactory.getInstance();
 
-        // GPIO-Pin für den Feuchtigkeitssensor konfigurieren (z. B. GPIO 1)
+        // Configure the GPIO pin for the humidity sensor (e.g. GPIO 1)
         final GpioPinAnalogInput moistureSensor = gpio.provisionAnalogInputPin(RaspiPin.GPIO_01, "MoistureSensor");
 
-        // GPIO-Pin für den Servomotor konfigurieren (z. B. GPIO 2)
+        // Event handler for the humidity sensor
+        moistureSensor.addListener(new GpioPinAnalogValueChangeListener() {
+            @Override
+            public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
+                int moistureLevel = event.getValue();
+                System.out.println("Feuchtigkeitswert: " + moistureLevel);
+
+                if (moistureLevel < MOISTURE_THRESHOLD) {
+                    System.out.println("Feuchtigkeit niedrig! Aktivieren des Servomotors...");
+                    activateServo(servoMotor);
+                } else {
+                    System.out.println("Feuchtigkeit ausreichend.");
+                    deactivateServo(servoMotor);
+                }
+        })
         final GpioPinPwmOutput servoMotor = gpio.provisionPwmOutputPin(RaspiPin.GPIO_02, "ServoMotor");
 
         // PWM für den Servomotor initialisieren
