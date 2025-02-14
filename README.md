@@ -82,7 +82,7 @@ Use the Pushbullet API Wrapper library for Java or send HTTP requests with a sta
 
 ## Thoughts what could come in the future
 - Room humidy sensors (basic automation, with 5 humidysensors)
-- 3D Printed shell
+- 3D Printed case
 - Apps (windows, Mac, Ios, Andoid)
    - These are the Host applications
 - An Shop...?
