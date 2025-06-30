@@ -1,79 +1,47 @@
-[![Dropit_up](https://github.com/user-attachments/assets/0a19571c-3c33-4321-92e9-d4176c368254)
-](https://drive.google.com/file/d/1HBf4QS1UOoG_XLS6ozG_MOTdtYTu6w13/view?usp=drive_link)
+![Citron(1)](https://github.com/user-attachments/assets/ba6ef89a-db88-40ba-8f34-345e3c373598)
 ------
+# Citron – Modular Smart Plant Care System
 
-# Description
-A repo for the code collection for an watering system for plants.
+**Citron** is a modular, open-source smart plant care ecosystem designed for flexibility, easy customization, and long-term compatibility. The system is built around several hardware modules, each with a dedicated function, allowing users to mix, match, and expand their setup as needed.
 
-# version Dilema
+> [!CAUTION]
+> EVERYTHING IS IN BETA OR NOT EVEN TESTET DOWNLOAD ANYTHING ON YOUR OWN HARM
 
-Every Version that ends with an .0 is an beta version and is not safe to use, every version without an .0 is an full version and is safe to use, if you are not shure just go to Releases and use that version. Every version with an that has an odd nummber in the middle of its name is an version with reservoir usage, if you want to use just the massegaing type use the newest version with an Even nummber.
+## Key Features
 
-# Useage
+- **Modular Design:**  
+  Combine only the module s you need:
+  - **Citron A:** Central bridge/host (Makes its own wifi, and connects to the Plant nodes)
+  - **Citron B:** Plant node (sensors, logic, optional pump control)
+  - **Pump Module:** Optional, with integrated water reservoir and water level sensing
 
-Download the newest version or the one that fits for your Rasberry pi vesion, and chose if you want an resrvoir/Pushbullet and download it
+- **Flexible Power Options:**  
+  Each module supports either battery or mains power, configurable by the user.
 
-# Shell file setup
+- **Automated or Assisted Watering:**  
+  Citron B can manage a pump for fully automated watering, or simply monitor and notify.
 
-Customizing the script
-Adapt paths: Replace ``/path/to/pi4j-core.jar`` and ``/path/to/your/code`` with the actual paths.
-Adapt Java classes: Make sure that the classes ``PlantWateringSystemServo`` (for the servo motor version) and ``PlantWateringSystemPushbullet`` (for the pushbullet version) are present in ``CODE_PATH``.
+- **Open Plant Database:**  
+  Community-driven, open-source plant care database—freely accessible and extendable.
 
-## create an Sytemd file
+- **Future-Proof & Extensible:**  
+  Designed for long-term compatibility, allowing upgrades and new modules to be added years after initial setup.
 
-``sudo nano /etc/systemd/system/plant_watering.service``
+## Example Use Cases
 
-### Systemd file input
+- **Home plant care:**  
+  Automate watering and monitor soil moisture and water levels for each plant.
+- **Educational projects:**  
+  Learn about IoT, sensors, and automation with approachable hardware and open software.
+- **Community gardening:**  
+  Share and improve plant care data, and collaborate on new modules or features.
 
-````
-[Unit]
-Description=Automatisches Pflanzen-Bewässerungssystem
-After=network.target
+## Get Involved
 
-[Service]
-ExecStart=/pfad/zu/plant_watering.sh
-Restart=always
-User=pi
-Environment=DISPLAY=:0
+Citron is open to contributions! Whether you’re a developer, maker, or plant enthusiast, your ideas and improvements are welcome.  
+Check out the [documentation](./docs) for hardware schematics, setup guides, and more.
 
-[Install]
-WantedBy=multi-user.target
-
-````
-
-### last steps
-we have this file also as an download available, 
-Safe the file and close it, then reaload deamon to refresh you system with ``sudo systemctl daemon-reload`` and now enable the service file with this command ``sudo systemctl enable plant_watering.service``
-
-# Reservoir set up 
->[!WARNING]
->not working, early beta
-
-## Hardware setup
-
-You need an Ressberry Pi that you can get [here](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-108032) and you need an Humidity sensor we recommend [this one](https://amzn.eu/d/1NiQAjr) also you need an chip that translates the code from the Rasberry Pi to the servomotr, you can get it [here](https://www.microchip.com/en-us/product/mcp3008), Finaly you need an servo motor that 
-
-
-# Message set up 
-
->[!CAUTION]
->No reservoir Support (coming soon)
-
-## Hardware
-
-You need an Ressberry Pi that you can get [here](https://www.raspberrypi.com/products/compute-module-5/?variant=cm5-108032) and you need an Humidity sensor we recommend [this one](https://amzn.eu/d/1NiQAjr).
-
-# Pushbullet setup
-
-### Software
-
-Sign in your pushbullet acount or get one, and get your API key under “Settings” > “Create Access Token”.
-Then change the value in the code ``YOUR_PUSHBULLET_API_KEY`` and pste there your api key, __nothing else__
-
-### Java library for Pushbullet
-
-Use the Pushbullet API Wrapper library for Java or send HTTP requests with a standard library.
-
+**Let me know if you want it even shorter, or if you’d like a tagline, badges, or a “How to get started” section!**
 # Coming soon 
 - Messages for multiple plants / Irrigation 
 - Personalized messages
