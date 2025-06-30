@@ -42,18 +42,6 @@ Citron is open to contributions! Whether you’re a developer, maker, or plant e
 Check out the [documentation](./docs) for hardware schematics, setup guides, and more.
 
 **Let me know if you want it even shorter, or if you’d like a tagline, badges, or a “How to get started” section!**
-# Coming soon 
-- Messages for multiple plants / Irrigation 
-- Personalized messages
-- more Compatibility
-- and more connectivity
-
-## Thoughts what could come in the future
-- Room humidy sensors (basic automation, with 5 humidysensors)
-- 3D Printed case
-- Apps (windows, Mac, Ios, Andoid)
-   - These are the Host applications
-- An Shop...?
 
 # Extras 
 
