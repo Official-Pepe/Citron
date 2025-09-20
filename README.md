@@ -39,7 +39,7 @@
 ## Get Involved
 
 Citron is open to contributions! Whether you’re a developer, maker, or plant enthusiast, your ideas and improvements are welcome.  
-Check out the [documentation](./docs) for hardware schematics, setup guides, and more.
+Check out the [documentation](https://github.com/Official-Pepe/docs) for hardware schematics, setup guides, and more.
 
 **Let me know if you want it even shorter, or if you’d like a tagline, badges, or a “How to get started” section!**
 
